@@ -10,7 +10,6 @@ router = APIRouter(prefix="/posts", tags=["posts"])
 def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     # cursor.execute("""SELECT * FROM posts""")
     # posts = cursor.fetchall()
-    print(current_user.email)
     posts = db.query(models.Post).all()
     return posts
 
